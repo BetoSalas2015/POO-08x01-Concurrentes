@@ -2,13 +2,18 @@
 /**
  * Write a description of class Hora here.
  * 
- * @author Roberto Salazar M�rquez 
- * @version 1.0
+ * @author Roberto Salazar Márquez 
+ * @version 1.1
  */
-public class Hora extends Thread 
-{
 
-  private int Segundos;
+import java.awt.*;
+import java.awt.event.*;
+
+public class Hora extends Frame implements Runnable
+{
+    private TextField Texto;
+    private Thread hilo;
+    private int Segundos;
 
   public Hora()
   {
@@ -31,11 +36,31 @@ public class Hora extends Thread
       setSegundos(0);
   }
   
-  public Hora(int h, int m, int s)
+  public Hora(int h, int m, int s, String nombre)
   {
+      super(nombre);
       setHoras(h);
       setMinutos(m);
       setSegundos(s);
+      setLayout(new  FlowLayout());
+      Texto = new TextField(8);
+      Texto.setEditable(false);
+      add(Texto);
+      addWindowListener(new CW());
+      setSize(170,80);
+      setVisible(true);
+      
+      hilo = new Thread(this);
+      hilo.start();
+  }
+  
+  
+  private class CW extends  WindowAdapter
+  {
+      public void windowClosing(WindowEvent e)
+      {
+          System.exit(0);
+      }
   }
     
   public void setHoras(int h)
@@ -56,11 +81,11 @@ public class Hora extends Thread
       {
           tick();
           try {
-              sleep(1000);
+              hilo.sleep(1000);
             } catch (InterruptedException ex) {
                 ex.printStackTrace();
             }
-          System.out.println(toString());
+          Texto.setText(toString());
           count++;
       }
       
@@ -124,10 +149,7 @@ public class Hora extends Thread
   
   public static void main(String Args[])
   {
-      Hora t = new Hora();     //  Estado nacimiento
-      Hora t2 = new Hora(12,48,00);
-      t.start();
-      t2.start();
+
   }
 
 }

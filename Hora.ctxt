@@ -1,6 +1,5 @@
 #BlueJ class context
 comment0.target=Hora
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Hora\ here.\r\n\ \r\n\ @author\ Roberto\ Salazar\ M\uFFFDrquez\ \r\n\ @version\ 1.0\r\n
 comment1.params=
 comment1.target=Hora()
 comment10.params=s
@@ -19,8 +18,8 @@ comment2.params=h
 comment2.target=Hora(int)
 comment3.params=h\ m
 comment3.target=Hora(int,\ int)
-comment4.params=h\ m\ s
-comment4.target=Hora(int,\ int,\ int)
+comment4.params=h\ m\ s\ nombre
+comment4.target=Hora(int,\ int,\ int,\ java.lang.String)
 comment5.params=h
 comment5.target=void\ setHoras(int)
 comment6.params=
